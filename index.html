@@ -206,6 +206,8 @@
           if (res.ok) {
             console.log('[Landing] Render is already awake!');
           }
+          // go to the home page
+          window.location.href = HOME_URL;
         })
         .catch(err => {
           console.log('[Landing] Render is waking up... (expected on cold start)');
