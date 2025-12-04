@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Positioning Agent - Transform Your Product Positioning</title>
+  <meta name="description" content="Use this AI agent to provoke a conversation that aligns your positioning with your conviction, real buyers' pain, urgency and product promise.">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#7318f1',
+            'primary-hover': '#6315d1',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Loading overlay styles */
+    .loading-overlay {
+      backdrop-filter: blur(4px);
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+    
+    /* Spinner animation */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .spinner {
+      animation: spin 1s linear infinite;
+    }
+    
+    /* Progress bar animation */
+    @keyframes progress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    .progress-bar {
+      animation: progress 60s linear forwards;
+    }
+    
+    /* Pulse animation for messages */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white">
+  
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-6">
+        <div class="flex items-center">
+          <h1 class="text-2xl font-bold text-[#202124]">AI Positioning Agent</h1>
+        </div>
+        <nav class="flex items-center space-x-4">
+          <a
+            href="#"
+            onclick="handleSignIn(event)"
+            class="bg-[#7318f1] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#6315d1] transition-colors cursor-pointer"
+          >
+            Sign In
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-4xl font-bold text-[#202124] mb-4">
+        Transform Your Product Positioning
+      </h2>
+      <p class="text-xl text-[#5F6368] mb-8 max-w-3xl mx-auto">
+        Every founder starts with conviction. 
+        Use this agent to provoke a conversation that aligns your positioning with your conviction, real buyers' pain, urgency and product promise.
+      </p>
+      
+      <div class="space-y-4 mb-16">
+        <div class="space-y-4">
+          <a
+            href="#"
+            onclick="handleStartAssessment(event)"
+            class="inline-block bg-[#7318f1] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#6315d1] transition-colors text-lg cursor-pointer"
+          >
+            Start Your Assessment
+          </a>
+          <p class="text-sm text-gray-500">
+            Free for your first 50 credits
+          </p>
+        </div>
+      </div>
+      
+      <!-- Feature Cards (optional - commented out in original) -->
+      <div class="grid md:grid-cols-3 gap-8 text-left mt-16">
+        <div class="p-6 border rounded-lg hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Problem Definition</h3>
+          <p class="text-[#5F6368]">Define the urgent problem your product solves and why it matters to your customers.</p>
+        </div>
+        <div class="p-6 border rounded-lg hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Ideal Customer Profile</h3>
+          <p class="text-[#5F6368]">Identify who feels this pain most acutely and how to reach them effectively.</p>
+        </div>
+        <div class="p-6 border rounded-lg hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Unique Solution</h3>
+          <p class="text-[#5F6368]">Make a promise no one else can deliver and prove it with compelling evidence.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Loading Overlay (hidden by default) -->
+  <div id="loading-overlay" class="loading-overlay fixed inset-0 z-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 text-center">
+      <!-- Spinner -->
+      <div class="mb-6">
+        <svg class="spinner w-16 h-16 mx-auto text-[#7318f1]" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </div>
+      
+      <!-- Loading Message -->
+      <h3 id="loading-message" class="text-xl font-semibold text-[#202124] mb-2 pulse">
+        Preparing your workspace...
+      </h3>
+      <p class="text-[#5F6368] mb-6">
+        This usually takes 30-60 seconds on first visit
+      </p>
+      
+      <!-- Progress Bar -->
+      <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
+        <div id="progress-bar" class="progress-bar bg-[#7318f1] h-2 rounded-full" style="width: 0%"></div>
+      </div>
+      
+      <!-- Status Text -->
+      <p id="status-text" class="text-sm text-[#5F6368]">
+        Waking up the AI...
+      </p>
+      
+      <!-- Retry Button (hidden by default) -->
+      <button
+        id="retry-button"
+        onclick="handleRetry()"
+        class="hidden mt-6 bg-[#7318f1] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#6315d1] transition-colors"
+      >
+        Try Again
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t mt-16">
+    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-[#5F6368]">
+      <p>&copy; 2024 AI Positioning Agent. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================
+    // CONFIGURATION
+    // ============================================
+    const RENDER_URL = 'https://positioning-tool.onrender.com';
+    const PING_ENDPOINT = `${RENDER_URL}/api/ping`;
+    const AUTH_URL = `${RENDER_URL}/auth/signin`;
+    const HOME_URL = `${RENDER_URL}`;
+    
+    // ============================================
+    // WAKE UP RENDER IMMEDIATELY ON PAGE LOAD
+    // ============================================
+    window.addEventListener('load', () => {
+      console.log('[Landing] Page loaded, pinging Render to wake up...');
+      
+      fetch(PING_ENDPOINT, { 
+        mode: 'cors',
+        cache: 'no-store'
+      })
+        .then(res => {
+          if (res.ok) {
+            console.log('[Landing] Render is already awake!');
+          }
+        })
+        .catch(err => {
+          console.log('[Landing] Render is waking up... (expected on cold start)');
+        });
+    });
+    
+    // ============================================
+    // HANDLE CTA BUTTON CLICKS
+    // ============================================
+    function handleStartAssessment(event) {
+      event.preventDefault();
+      showLoadingOverlay();
+      pollHealthCheck(AUTH_URL);
+    }
+    
+    function handleSignIn(event) {
+      event.preventDefault();
+      showLoadingOverlay();
+      pollHealthCheck(AUTH_URL);
+    }
+    
+    // ============================================
+    // LOADING OVERLAY
+    // ============================================
+    function showLoadingOverlay() {
+      const overlay = document.getElementById('loading-overlay');
+      const progressBar = document.getElementById('progress-bar');
+      
+      overlay.classList.remove('hidden');
+      
+      // Reset progress bar
+      progressBar.style.width = '0%';
+      progressBar.style.animation = 'none';
+      progressBar.offsetHeight; // Trigger reflow
+      progressBar.style.animation = 'progress 60s linear forwards';
+      
+      updateLoadingMessage('Preparing your workspace...');
+      updateStatusText('Waking up the AI...');
+    }
+    
+    function hideLoadingOverlay() {
+      const overlay = document.getElementById('loading-overlay');
+      overlay.classList.add('hidden');
+    }
+    
+    function updateLoadingMessage(message) {
+      document.getElementById('loading-message').textContent = message;
+    }
+    
+    function updateStatusText(text) {
+      document.getElementById('status-text').textContent = text;
+    }
+    
+    // ============================================
+    // HEALTH CHECK POLLING
+    // ============================================
+    function pollHealthCheck(redirectUrl) {
+      const startTime = Date.now();
+      const maxWait = 65000; // 65 seconds (slightly more than progress bar)
+      const pollInterval = 2000; // 2 seconds
+      
+      const messages = [
+        { time: 0, message: 'Preparing your workspace...', status: 'Waking up the AI...' },
+        { time: 10000, message: 'Starting up...', status: 'Connecting to servers...' },
+        { time: 20000, message: 'Almost there...', status: 'Loading your workspace...' },
+        { time: 35000, message: 'Just a moment...', status: 'Finalizing setup...' },
+        { time: 50000, message: 'Nearly ready...', status: 'Almost done...' },
+      ];
+      
+      let currentMessageIndex = 0;
+      
+      const poll = () => {
+        const elapsed = Date.now() - startTime;
+        
+        // Update messages based on elapsed time
+        while (currentMessageIndex < messages.length - 1 && 
+               elapsed >= messages[currentMessageIndex + 1].time) {
+          currentMessageIndex++;
+          updateLoadingMessage(messages[currentMessageIndex].message);
+          updateStatusText(messages[currentMessageIndex].status);
+        }
+        
+        console.log(`[Landing] Polling health check... (${Math.round(elapsed / 1000)}s elapsed)`);
+        
+        fetch(PING_ENDPOINT, { 
+          mode: 'cors',
+          cache: 'no-store'
+        })
+          .then(res => {
+            if (res.ok) {
+              console.log('[Landing] Render is ready! Redirecting...');
+              updateLoadingMessage('Ready!');
+              updateStatusText('Redirecting to app...');
+              
+              // Small delay for user to see "Ready!" message
+              setTimeout(() => {
+                window.location.href = redirectUrl;
+              }, 500);
+            } else {
+              throw new Error('Not ready yet');
+            }
+          })
+          .catch(err => {
+            if (elapsed < maxWait) {
+              setTimeout(poll, pollInterval);
+            } else {
+              showTimeoutError();
+            }
+          });
+      };
+      
+      // Start polling
+      poll();
+    }
+    
+    // ============================================
+    // TIMEOUT HANDLING
+    // ============================================
+    function showTimeoutError() {
+      console.log('[Landing] Timeout - showing retry button');
+      updateLoadingMessage('Taking longer than expected...');
+      updateStatusText('The server might be experiencing high load.');
+      document.getElementById('retry-button').classList.remove('hidden');
+      
+      // Stop progress bar
+      const progressBar = document.getElementById('progress-bar');
+      progressBar.style.animation = 'none';
+      progressBar.style.width = '100%';
+    }
+    
+    function handleRetry() {
+      console.log('[Landing] Retry clicked');
+      document.getElementById('retry-button').classList.add('hidden');
+      
+      // Reset and try again
+      const progressBar = document.getElementById('progress-bar');
+      progressBar.style.width = '0%';
+      progressBar.style.animation = 'progress 60s linear forwards';
+      
+      pollHealthCheck(AUTH_URL);
+    }
+  </script>
+</body>
+</html>
+
