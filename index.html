@@ -180,11 +180,16 @@
   <!-- Footer -->
   <footer class="bg-gray-50 border-t mt-16">
     <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-[#5F6368]">
-      <p>&copy; 2024 AI Positioning Agent. All rights reserved.</p>
+      <p>&copy; <span id="copyright-year"></span> AI Positioning Agent. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
+    // ============================================
+    // DYNAMIC COPYRIGHT YEAR
+    // ============================================
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
     // ============================================
     // CONFIGURATION
     // ============================================
